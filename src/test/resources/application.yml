@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test #메모리 모드 DB띄우지 않고 테스트, db 연결하려면 jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+#        show_sql: true
+        format_sql: true
+#스프링부트는 위의 별도의 설정이 없으면 메모리모드로 돌린다! ㄷㄷ 위의 설정들 모두 없어도 메모리DB로 실행
+#따라서 Test에서의 YML과 실제의 YML설정을 다르게 해주면 됨
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
